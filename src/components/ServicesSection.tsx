@@ -1,4 +1,5 @@
 import { Megaphone, Users2, LineChart, Palette, Target, Repeat } from "lucide-react";
+import AnimatedSection from "./AnimatedSection";
 
 const ServicesSection = () => {
   const services = [
@@ -38,7 +39,7 @@ const ServicesSection = () => {
     <section id="services" className="py-20 sm:py-32 bg-secondary/30">
       <div className="container mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <AnimatedSection className="text-center mb-16">
           <span className="inline-block font-body text-sm font-semibold text-primary uppercase tracking-wider mb-4">
             What We Offer
           </span>
@@ -48,26 +49,28 @@ const ServicesSection = () => {
           <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
             Comprehensive Meta advertising solutions designed to grow your business.
           </p>
-        </div>
+        </AnimatedSection>
 
         {/* Services Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <div
+            <AnimatedSection
               key={service.title}
-              className="group p-6 sm:p-8 rounded-2xl bg-card border border-border/50 shadow-soft hover:shadow-card transition-all duration-500 hover:-translate-y-2"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              delay={index * 0.1}
+              direction={index % 2 === 0 ? "left" : "right"}
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
-                <service.icon className="w-6 h-6 text-primary" />
+              <div className="group h-full p-6 sm:p-8 rounded-2xl bg-card border border-border/50 shadow-soft hover:shadow-card transition-all duration-500 hover:-translate-y-2">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
+                  <service.icon className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-display text-lg font-semibold mb-2 text-foreground">
+                  {service.title}
+                </h3>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                  {service.description}
+                </p>
               </div>
-              <h3 className="font-display text-lg font-semibold mb-2 text-foreground">
-                {service.title}
-              </h3>
-              <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                {service.description}
-              </p>
-            </div>
+            </AnimatedSection>
           ))}
         </div>
       </div>

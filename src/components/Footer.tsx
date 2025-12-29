@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Phone } from "lucide-react";
+import { motion } from "framer-motion";
 import ContactModal from "./ContactModal";
+import AnimatedSection from "./AnimatedSection";
 
 const Footer = () => {
   const [contactOpen, setContactOpen] = useState(false);
@@ -11,18 +13,23 @@ const Footer = () => {
       <footer className="bg-foreground text-background">
         {/* CTA Section */}
         <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-24">
-          <div className="max-w-3xl mx-auto text-center">
+          <AnimatedSection className="max-w-3xl mx-auto text-center">
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
               Ready to <span className="text-primary">Scale</span> Your Business?
             </h2>
             <p className="font-body text-lg text-background/70 mb-8">
               Join 50+ businesses that trust qoremedia to manage their Meta advertising and drive real growth.
             </p>
-            <Button variant="hero" size="xl" onClick={() => setContactOpen(true)} className="group">
-              Schedule Your Free Consultation
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </div>
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Button variant="hero" size="xl" onClick={() => setContactOpen(true)} className="group">
+                Schedule Your Free Consultation
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </motion.div>
+          </AnimatedSection>
         </div>
 
         {/* Footer Links */}

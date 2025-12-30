@@ -10,14 +10,14 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-foreground text-background">
+      <footer className="bg-card dark:bg-secondary border-t border-border">
         {/* CTA Section */}
         <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16">
           <AnimatedSection className="max-w-3xl mx-auto text-center">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-foreground">
               Ready to <span className="text-primary">Scale</span> Your Business?
             </h2>
-            <p className="font-body text-lg text-background/70 mb-8">
+            <p className="font-body text-lg text-muted-foreground mb-8">
               Join 50+ businesses that trust qoremedia to manage their Meta advertising and drive real growth.
             </p>
             <motion.div
@@ -33,25 +33,26 @@ const Footer = () => {
         </div>
 
         {/* Footer Links */}
-        <div className="border-t border-background/10">
+        <div className="border-t border-border">
           <div className="container mx-auto px-4 sm:px-6 py-12">
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Brand */}
               <div className="lg:col-span-2">
                 <a href="#" className="inline-block mb-4">
                   <span className="font-display text-2xl font-bold">
-                    <span className="text-primary">qore</span>media
+                    <span className="text-primary">qore</span>
+                    <span className="text-foreground">media</span>
                   </span>
                 </a>
-                <p className="font-body text-background/60 max-w-sm mb-6">
+                <p className="font-body text-muted-foreground max-w-sm mb-6">
                   Your trusted partner for Meta advertising. We help businesses scale with data-driven strategies.
                 </p>
                 <div className="flex flex-col gap-3">
-                  <a href="tel:+917797571334" className="inline-flex items-center gap-2 text-background/60 hover:text-primary transition-colors">
+                  <a href="tel:+917797571334" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                     <Phone className="w-4 h-4" />
                     <span className="font-body text-sm">+91 77975 71334</span>
                   </a>
-                  <a href="mailto:qoremediabuisness@gmail.com" className="inline-flex items-center gap-2 text-background/60 hover:text-primary transition-colors">
+                  <a href="mailto:qoremediabuisness@gmail.com" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                     <Mail className="w-4 h-4" />
                     <span className="font-body text-sm">qoremediabuisness@gmail.com</span>
                   </a>
@@ -60,13 +61,13 @@ const Footer = () => {
 
               {/* Quick Links */}
               <div>
-                <h4 className="font-display font-semibold mb-4">Quick Links</h4>
+                <h4 className="font-display font-semibold mb-4 text-foreground">Quick Links</h4>
                 <ul className="space-y-3">
                   {["Services", "Strategy", "Pricing", "About"].map((link) => (
                     <li key={link}>
                       <a
                         href={`#${link.toLowerCase()}`}
-                        className="font-body text-sm text-background/60 hover:text-primary transition-colors"
+                        className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"
                       >
                         {link}
                       </a>
@@ -77,11 +78,11 @@ const Footer = () => {
 
               {/* Services */}
               <div>
-                <h4 className="font-display font-semibold mb-4">Services</h4>
+                <h4 className="font-display font-semibold mb-4 text-foreground">Services</h4>
                 <ul className="space-y-3">
                   {["Meta Ads", "Lead Generation", "Retargeting", "Creative Strategy"].map((service) => (
                     <li key={service}>
-                      <span className="font-body text-sm text-background/60">
+                      <span className="font-body text-sm text-muted-foreground">
                         {service}
                       </span>
                     </li>
@@ -93,9 +94,9 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-background/10">
+        <div className="border-t border-border">
           <div className="container mx-auto px-4 sm:px-6 py-6">
-            <p className="font-body text-sm text-background/50 text-center">
+            <p className="font-body text-sm text-muted-foreground text-center">
               © {new Date().getFullYear()} qoremedia. All rights reserved.
             </p>
           </div>

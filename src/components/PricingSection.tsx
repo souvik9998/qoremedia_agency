@@ -74,7 +74,7 @@ const PricingSection = () => {
                 direction={index === 0 ? "right" : "left"}
               >
                 <div
-                  className={`relative h-full p-8 rounded-3xl transition-all duration-500 hover:-translate-y-2 ${
+                  className={`relative h-full p-8 rounded-3xl transition-all duration-500 hover:-translate-y-2 flex flex-col ${
                     pkg.popular
                       ? "gradient-card border-2 border-primary shadow-elevated"
                       : "gradient-card border border-border/50 shadow-card"
@@ -112,7 +112,7 @@ const PricingSection = () => {
                   </div>
 
                   {/* Features List */}
-                  <ul className="space-y-4 mb-8">
+                  <ul className="space-y-4 mb-8 flex-grow">
                     {pkg.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-3">
                         <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -123,15 +123,17 @@ const PricingSection = () => {
                     ))}
                   </ul>
 
-                  {/* CTA Button */}
-                  <Button
-                    variant={pkg.popular ? "hero" : "outline"}
-                    size="lg"
-                    className="w-full"
-                    onClick={() => setContactOpen(true)}
-                  >
-                    Get Started
-                  </Button>
+                  {/* CTA Button - Always at bottom */}
+                  <div className="mt-auto">
+                    <Button
+                      variant={pkg.popular ? "hero" : "outline"}
+                      size="lg"
+                      className="w-full"
+                      onClick={() => setContactOpen(true)}
+                    >
+                      Get Started
+                    </Button>
+                  </div>
                 </div>
               </AnimatedSection>
             ))}

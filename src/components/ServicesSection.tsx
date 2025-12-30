@@ -126,7 +126,7 @@ const ServicesSection = () => {
               whileHover={{ scale: 1.01, y: -4 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="group relative p-6 sm:p-8 rounded-2xl bg-card/80 backdrop-blur-sm border border-border/50 hover:border-accent/30 hover:bg-card/90 transition-all duration-500 overflow-hidden">
+              <div className="group relative p-6 sm:p-8 rounded-2xl bg-card border border-border/50 shadow-card hover:shadow-elevated hover:border-accent/30 transition-all duration-500 overflow-hidden">
                 {/* Subtle hover glow */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-accent/5 via-transparent to-accent/5 pointer-events-none" />
                 

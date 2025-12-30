@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -6,54 +5,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Phone, Mail, MessageCircle } from "lucide-react";
-import CountUp from "react-countup";
 
 interface ContactModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
 
-interface AnimatedNumberProps {
-  value: string;
-  start: boolean;
-}
-
-const AnimatedNumber = ({ value, start }: AnimatedNumberProps) => {
-  // Extract digits and format
-  const digits = value.replace(/\D/g, "");
-  const prefix = value.startsWith("+") ? "+" : "";
-  
-  if (!start) {
-    return <span>{value}</span>;
-  }
-
-  return (
-    <span>
-      {prefix}
-      <CountUp
-        start={0}
-        end={parseInt(digits)}
-        duration={1.5}
-        separator=""
-        preserveValue
-      />
-    </span>
-  );
-};
-
 const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
-  const [animationStarted, setAnimationStarted] = useState(false);
-
-  useEffect(() => {
-    if (open) {
-      // Small delay before starting animation
-      const timer = setTimeout(() => setAnimationStarted(true), 200);
-      return () => clearTimeout(timer);
-    } else {
-      setAnimationStarted(false);
-    }
-  }, [open]);
-
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md gradient-card border-border/50 shadow-elevated">
@@ -76,9 +34,7 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
                 <Phone className="w-5 h-5 text-primary-foreground" />
               </div>
               <div>
-                <p className="font-medium text-foreground font-mono">
-                  <AnimatedNumber value="+91 77975 71334" start={animationStarted} />
-                </p>
+                <p className="font-medium text-foreground">+91 77975 71334</p>
                 <p className="text-sm text-muted-foreground">Primary Contact</p>
               </div>
             </a>
@@ -91,9 +47,7 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
                 <MessageCircle className="w-5 h-5 text-primary-foreground" />
               </div>
               <div>
-                <p className="font-medium text-foreground font-mono">
-                  <AnimatedNumber value="+91 7001090471" start={animationStarted} />
-                </p>
+                <p className="font-medium text-foreground">+91 7001090471</p>
                 <p className="text-sm text-muted-foreground">Alternate Contact</p>
               </div>
             </a>

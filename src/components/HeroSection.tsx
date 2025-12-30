@@ -1,11 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { motion } from "framer-motion";
+import CountUp from "react-countup";
 import ContactModal from "./ContactModal";
 
 const HeroSection = () => {
   const [contactOpen, setContactOpen] = useState(false);
+  const [startCount, setStartCount] = useState(false);
+  const statsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStartCount(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -42,13 +62,20 @@ const HeroSection = () => {
     },
   };
 
+  const stats = [
+    { value: 3, suffix: "+", label: "Years Experience", highlight: false },
+    { value: 50, suffix: "+", label: "Happy Clients", highlight: false },
+    { value: 10, suffix: "X", label: "Average ROAS", highlight: true },
+    { value: null, text: "Meta", label: "Ads Certified", highlight: false },
+  ];
+
   return (
     <>
       <section className="relative min-h-screen gradient-hero overflow-hidden pt-20">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div 
-            className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"
+            className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
             animate={{ 
               y: [0, -20, 0],
               scale: [1, 1.1, 1],
@@ -60,7 +87,7 @@ const HeroSection = () => {
             }}
           />
           <motion.div 
-            className="absolute bottom-40 left-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl"
+            className="absolute bottom-40 left-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
             animate={{ 
               y: [0, 20, 0],
               scale: [1, 1.05, 1],
@@ -72,7 +99,7 @@ const HeroSection = () => {
               delay: 1,
             }}
           />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/3 to-transparent rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/5 to-transparent rounded-full" />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -98,11 +125,11 @@ const HeroSection = () => {
             {/* Main Heading */}
             <motion.h1 
               variants={itemVariants}
-              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 max-w-4xl"
+              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 max-w-4xl uppercase tracking-tight"
             >
-              Engineering high-speed systems to{" "}
-              <span className="text-gradient">scale your brand</span> and{" "}
-              <span className="text-gradient">surge your revenue</span>
+              We Help Your Business
+              <br />
+              <span className="text-gradient">To Grow</span>
             </motion.h1>
 
             {/* Subheading */}
@@ -128,24 +155,35 @@ const HeroSection = () => {
               </Button>
             </motion.div>
 
-            {/* Trust Indicators */}
+            {/* Trust Indicators with Count Animation */}
             <motion.div 
+              ref={statsRef}
               className="mt-16 flex flex-wrap items-center justify-center gap-8 sm:gap-12"
               variants={containerVariants}
             >
-              {[
-                { value: "3+", label: "Years Experience" },
-                { value: "50+", label: "Happy Clients" },
-                { value: "10X", label: "Average ROAS", highlight: true },
-                { value: "Meta", label: "Ads Certified" },
-              ].map((stat) => (
+              {stats.map((stat) => (
                 <motion.div 
                   key={stat.label}
                   variants={statsVariants}
                   className="text-center"
                 >
                   <p className={`font-display text-3xl sm:text-4xl font-bold ${stat.highlight ? 'text-primary' : 'text-foreground'}`}>
-                    {stat.value}
+                    {stat.value !== null ? (
+                      <>
+                        {startCount ? (
+                          <CountUp
+                            start={0}
+                            end={stat.value}
+                            duration={2}
+                            suffix={stat.suffix}
+                          />
+                        ) : (
+                          `0${stat.suffix}`
+                        )}
+                      </>
+                    ) : (
+                      stat.text
+                    )}
                   </p>
                   <p className="font-body text-sm text-muted-foreground">{stat.label}</p>
                 </motion.div>

@@ -39,7 +39,7 @@ const StrategySection = () => {
 
   return (
     <>
-      <section id="strategy" className="py-20 sm:py-32 bg-secondary/30">
+      <section id="strategy" className="py-12 sm:py-20 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left Content */}

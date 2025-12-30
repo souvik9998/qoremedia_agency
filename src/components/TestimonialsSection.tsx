@@ -46,7 +46,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-20 sm:py-32 bg-secondary/30 overflow-hidden">
+    <section className="py-12 sm:py-20 bg-secondary/30 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <AnimatedSection className="text-center mb-16">

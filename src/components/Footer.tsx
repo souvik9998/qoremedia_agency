@@ -12,7 +12,7 @@ const Footer = () => {
     <>
       <footer className="bg-foreground text-background">
         {/* CTA Section */}
-        <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-24">
+        <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16">
           <AnimatedSection className="max-w-3xl mx-auto text-center">
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
               Ready to <span className="text-primary">Scale</span> Your Business?

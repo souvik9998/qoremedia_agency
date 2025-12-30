@@ -92,7 +92,7 @@ const HeroSection = () => {
                 animate={{ opacity: [1, 0.5, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
-              <span className="font-body text-sm font-medium text-primary">Meta Ads Experts</span>
+              <span className="font-body text-sm font-medium text-primary">Digital Growth Partner</span>
             </motion.div>
 
             {/* Main Heading */}
@@ -100,9 +100,9 @@ const HeroSection = () => {
               variants={itemVariants}
               className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
             >
-              Scale Your Business with
+              We Help Your Business
               <br />
-              <span className="text-gradient">Expert Meta Ads</span>
+              <span className="text-gradient">To Grow</span>
             </motion.h1>
 
             {/* Subheading */}
@@ -110,7 +110,7 @@ const HeroSection = () => {
               variants={itemVariants}
               className="font-body text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
             >
-              We help businesses achieve exceptional growth through data-driven Meta advertising strategies that deliver real, measurable results.
+              Engineering high-speed systems to scale your brand and surge your revenue.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -119,12 +119,12 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row gap-4"
             >
               <Button variant="hero" size="xl" onClick={() => setContactOpen(true)} className="group">
-                Get Started Today
+                Start Growing Today
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button variant="outline" size="xl" onClick={() => setContactOpen(true)} className="group">
                 <Play className="w-5 h-5" />
-                Watch How It Works
+                See How It Works
               </Button>
             </motion.div>
 
@@ -138,7 +138,7 @@ const HeroSection = () => {
                 { value: "50+", label: "Happy Clients" },
                 { value: "10X", label: "Average ROAS", highlight: true },
                 { value: "Meta", label: "Ads Certified" },
-              ].map((stat, index) => (
+              ].map((stat) => (
                 <motion.div 
                   key={stat.label}
                   variants={statsVariants}

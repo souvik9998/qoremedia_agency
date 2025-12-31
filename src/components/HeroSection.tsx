@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import ContactModal from "./ContactModal";
@@ -71,35 +71,52 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="relative min-h-screen gradient-hero overflow-hidden pt-20">
-        {/* Background Elements */}
+      <section className="relative min-h-screen bg-background overflow-hidden pt-20">
+        {/* Background Gradient Glow */}
         <div className="absolute inset-0 overflow-hidden">
+          {/* Top center glow */}
           <motion.div 
-            className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
+            className="absolute -top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] gradient-glow opacity-60"
             animate={{ 
-              y: [0, -20, 0],
               scale: [1, 1.1, 1],
+              opacity: [0.4, 0.6, 0.4],
             }}
             transition={{ 
-              duration: 6, 
+              duration: 8, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+          />
+          {/* Floating orbs */}
+          <motion.div 
+            className="absolute top-40 right-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl"
+            animate={{ 
+              y: [0, -30, 0],
+              x: [0, 20, 0],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{ 
+              duration: 10, 
               repeat: Infinity, 
               ease: "easeInOut" 
             }}
           />
           <motion.div 
-            className="absolute bottom-40 left-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
+            className="absolute bottom-40 left-20 w-80 h-80 rounded-full bg-accent/10 blur-3xl"
             animate={{ 
-              y: [0, 20, 0],
-              scale: [1, 1.05, 1],
+              y: [0, 30, 0],
+              x: [0, -20, 0],
+              scale: [1, 1.15, 1],
             }}
             transition={{ 
-              duration: 8, 
+              duration: 12, 
               repeat: Infinity, 
               ease: "easeInOut",
-              delay: 1,
+              delay: 2,
             }}
           />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/5 to-transparent rounded-full" />
+          {/* Grid pattern overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -112,11 +129,11 @@ const HeroSection = () => {
             {/* Badge */}
             <motion.div 
               variants={itemVariants}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 backdrop-blur-sm"
             >
               <motion.span 
                 className="w-2 h-2 rounded-full bg-primary"
-                animate={{ opacity: [1, 0.5, 1] }}
+                animate={{ opacity: [1, 0.4, 1], scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
               <span className="font-body text-sm font-medium text-primary">Digital Growth Partner</span>
@@ -125,7 +142,7 @@ const HeroSection = () => {
             {/* Main Heading */}
             <motion.h1 
               variants={itemVariants}
-              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 max-w-4xl  tracking-tight"
+              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 max-w-4xl tracking-tight"
             >
               We Help Your Business
               <br />
@@ -140,25 +157,37 @@ const HeroSection = () => {
               Engineering high-speed systems to scale your brand and surge your revenue.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* Single CTA Button with Animation */}
             <motion.div 
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4"
             >
-              <Button variant="hero" size="xl" onClick={() => setContactOpen(true)} className="group">
-                Start Growing Today
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button variant="outline" size="xl" onClick={() => setContactOpen(true)} className="group">
-                <Play className="w-5 h-5" />
-                See How It Works
-              </Button>
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button 
+                  size="xl" 
+                  onClick={() => setContactOpen(true)} 
+                  className="group relative overflow-hidden gradient-primary text-primary-foreground shadow-glow hover:shadow-glow-intense transition-all duration-500 animate-pulse-glow"
+                >
+                  {/* Shimmer effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                    animate={{ x: ['-200%', '200%'] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                  />
+                  <span className="relative z-10 flex items-center gap-2">
+                    Unlock the Qoremedia
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Button>
+              </motion.div>
             </motion.div>
 
             {/* Trust Indicators with Count Animation */}
             <motion.div 
               ref={statsRef}
-              className="mt-16 flex flex-wrap items-center justify-center gap-8 sm:gap-12"
+              className="mt-20 flex flex-wrap items-center justify-center gap-8 sm:gap-16"
               variants={containerVariants}
             >
               {stats.map((stat) => (
@@ -185,15 +214,15 @@ const HeroSection = () => {
                       stat.text
                     )}
                   </p>
-                  <p className="font-body text-sm text-muted-foreground">{stat.label}</p>
+                  <p className="font-body text-sm text-muted-foreground mt-1">{stat.label}</p>
                 </motion.div>
               ))}
             </motion.div>
           </motion.div>
         </div>
 
-        {/* Bottom Gradient */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+        {/* Bottom Gradient Fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background via-background/80 to-transparent" />
       </section>
       <ContactModal open={contactOpen} onOpenChange={setContactOpen} />
     </>

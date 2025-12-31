@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, Phone } from "lucide-react";
+import { ArrowRight, Mail, Phone, Instagram, Linkedin, Facebook } from "lucide-react";
 import { motion } from "framer-motion";
 import ContactModal from "./ContactModal";
 import AnimatedSection from "./AnimatedSection";
@@ -52,9 +52,39 @@ const Footer = () => {
                     <Phone className="w-4 h-4" />
                     <span className="font-body text-sm">+91 77975 71334</span>
                   </a>
-                  <a href="mailto:qoremediabuisness@gmail.com" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                  <a href="mailto:hello@qoremedia.in" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                     <Mail className="w-4 h-4" />
-                    <span className="font-body text-sm">qoremediabuisness@gmail.com</span>
+                    <span className="font-body text-sm">hello@qoremedia.in</span>
+                  </a>
+                </div>
+                {/* Social Links */}
+                <div className="flex gap-3 mt-4">
+                  <a
+                    href="https://instagram.com/qoremedia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 rounded-lg bg-secondary/50 hover:bg-primary/15 flex items-center justify-center transition-colors group"
+                    aria-label="Instagram"
+                  >
+                    <Instagram className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </a>
+                  <a
+                    href="https://linkedin.com/company/qoremedia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 rounded-lg bg-secondary/50 hover:bg-primary/15 flex items-center justify-center transition-colors group"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </a>
+                  <a
+                    href="https://facebook.com/qoremedia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 rounded-lg bg-secondary/50 hover:bg-primary/15 flex items-center justify-center transition-colors group"
+                    aria-label="Facebook"
+                  >
+                    <Facebook className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                   </a>
                 </div>
               </div>

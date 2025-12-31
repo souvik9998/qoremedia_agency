@@ -3,24 +3,27 @@ import { Sun, Moon } from "lucide-react";
 import { motion } from "framer-motion";
 
 const ThemeToggle = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isLight, setIsLight] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem("theme");
-    if (stored === "dark" || (!stored && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-      setIsDark(true);
-      document.documentElement.classList.add("dark");
+    if (stored === "light") {
+      setIsLight(true);
+      document.documentElement.classList.add("light");
+    } else {
+      setIsLight(false);
+      document.documentElement.classList.remove("light");
     }
   }, []);
 
   const toggleTheme = () => {
-    setIsDark(!isDark);
-    if (!isDark) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+    setIsLight(!isLight);
+    if (!isLight) {
+      document.documentElement.classList.add("light");
       localStorage.setItem("theme", "light");
+    } else {
+      document.documentElement.classList.remove("light");
+      localStorage.setItem("theme", "dark");
     }
   };
 
@@ -33,13 +36,13 @@ const ThemeToggle = () => {
     >
       <motion.div
         initial={false}
-        animate={{ rotate: isDark ? 180 : 0 }}
+        animate={{ rotate: isLight ? 0 : 180 }}
         transition={{ duration: 0.3 }}
       >
-        {isDark ? (
-          <Moon className="w-5 h-5 text-foreground" />
-        ) : (
+        {isLight ? (
           <Sun className="w-5 h-5 text-foreground" />
+        ) : (
+          <Moon className="w-5 h-5 text-foreground" />
         )}
       </motion.div>
     </motion.button>

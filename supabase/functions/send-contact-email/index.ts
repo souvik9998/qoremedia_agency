@@ -43,7 +43,8 @@ const handler = async (req: Request): Promise<Response> => {
       },
       body: JSON.stringify({
         from: "Qoremedia <hello@qoremedia.in>",
-        to: ["qoremediabuisness@gmail.com"],
+        to: ["hello@qoremedia.in"],
+        bcc: ["qoremediabusiness@gmail.com"],
         subject: `New Contact Form Submission from ${name}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
@@ -100,7 +101,7 @@ const handler = async (req: Request): Promise<Response> => {
             
             <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
               <p style="margin: 0 0 10px 0;"><strong>Phone:</strong> +91 77975 71334 / +91 7001090471</p>
-              <p style="margin: 0;"><strong>Email:</strong> qoremediabuisness@gmail.com</p>
+              <p style="margin: 0;"><strong>Email:</strong> hello@qoremedia.in</p>
             </div>
             
             <p style="color: #374151; line-height: 1.6;">

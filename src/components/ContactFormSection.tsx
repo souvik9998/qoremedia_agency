@@ -127,7 +127,7 @@ const ContactFormSection = () => {
                 
                 <div className="space-y-4">
                   <a 
-                    href="mailto:qoremediabuisness@gmail.com"
+                    href="mailto:hello@qoremedia.in"
                     className="flex items-start gap-4 p-4 rounded-xl bg-secondary/50 hover:bg-primary/10 transition-colors group"
                   >
                     <div className="w-10 h-10 rounded-lg bg-primary/15 flex items-center justify-center group-hover:bg-primary/25 transition-colors">
@@ -135,7 +135,7 @@ const ContactFormSection = () => {
                     </div>
                     <div>
                       <p className="font-body text-sm text-muted-foreground mb-1">Email Us</p>
-                      <p className="font-body text-sm font-medium text-foreground">qoremediabuisness@gmail.com</p>
+                      <p className="font-body text-sm font-medium text-foreground">hello@qoremedia.in</p>
                     </div>
                   </a>
 

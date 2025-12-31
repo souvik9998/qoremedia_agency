@@ -164,14 +164,12 @@ const HeroSection = () => {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="relative inline-block group"
+                className="inline-block"
               >
-                {/* Shining border line */}
-                <div className="animate-shine-border" />
                 <Button 
                   size="lg" 
                   onClick={() => setContactOpen(true)} 
-                  className="relative gradient-primary text-primary-foreground rounded-lg border-0"
+                  className="btn-shine-border gradient-primary text-primary-foreground rounded-lg border-0"
                 >
                   <span className="flex items-center gap-2">
                     Unlock the Qoremedia

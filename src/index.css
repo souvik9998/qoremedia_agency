@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -25,8 +25,8 @@
     --muted: 250 12% 18%;
     --muted-foreground: 250 10% 60%;
 
-    --accent: 280 75% 68%;
-    --accent-foreground: 250 20% 6%;
+    --accent: 245 60% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -276,11 +276,29 @@
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px hsl(270, 80%, 65%, 0.3), 0 0 40px hsl(270, 80%, 65%, 0.2);
+    box-shadow: 0 0 20px hsl(245, 60%, 50%, 0.3), 0 0 40px hsl(245, 60%, 50%, 0.2);
   }
   50% {
-    box-shadow: 0 0 30px hsl(270, 80%, 65%, 0.5), 0 0 60px hsl(270, 80%, 65%, 0.3);
+    box-shadow: 0 0 30px hsl(245, 60%, 50%, 0.5), 0 0 60px hsl(245, 60%, 50%, 0.3);
   }
+}
+
+@keyframes border-spin {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-border-spin {
+  background: linear-gradient(90deg, hsl(245, 60%, 50%), hsl(270, 70%, 60%), hsl(290, 60%, 55%), hsl(245, 60%, 50%));
+  background-size: 300% 100%;
+  animation: border-spin 3s linear infinite;
 }
 
 @keyframes shimmer {

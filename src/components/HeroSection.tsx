@@ -157,26 +157,21 @@ const HeroSection = () => {
               Engineering high-speed systems to scale your brand and surge your revenue.
             </motion.p>
 
-            {/* Single CTA Button with Animation */}
+            {/* Single CTA Button with Border Animation */}
             <motion.div 
               variants={itemVariants}
             >
               <motion.div
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                className="relative p-[2px] rounded-xl animate-border-spin"
               >
                 <Button 
                   size="xl" 
                   onClick={() => setContactOpen(true)} 
-                  className="group relative overflow-hidden gradient-primary text-primary-foreground shadow-glow hover:shadow-glow-intense transition-all duration-500 animate-pulse-glow"
+                  className="relative bg-secondary text-foreground hover:bg-secondary/80 rounded-xl border-0"
                 >
-                  {/* Shimmer effect */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                    animate={{ x: ['-200%', '200%'] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                  />
-                  <span className="relative z-10 flex items-center gap-2">
+                  <span className="flex items-center gap-2">
                     Unlock the Qoremedia
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </span>

@@ -82,7 +82,7 @@ const ProofOfWorkSection = () => {
             Our Portfolio
           </span>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Proof of Our Work
+            Our Success Stories
           </h2>
           <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
             Real results from real clients. See how we've helped businesses grow with our services.

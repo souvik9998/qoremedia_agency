@@ -42,7 +42,7 @@ const handler = async (req: Request): Promise<Response> => {
         "Authorization": `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Qoremedia <onboarding@resend.dev>",
+        from: "Qoremedia <hello@qoremedia.in>",
         to: ["qoremediabuisness@gmail.com"],
         subject: `New Contact Form Submission from ${name}`,
         html: `
@@ -83,7 +83,7 @@ const handler = async (req: Request): Promise<Response> => {
         "Authorization": `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Qoremedia <onboarding@resend.dev>",
+        from: "Qoremedia <hello@qoremedia.in>",
         to: [email],
         subject: "We received your message - Qoremedia",
         html: `

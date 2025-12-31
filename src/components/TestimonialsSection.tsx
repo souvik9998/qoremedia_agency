@@ -9,7 +9,7 @@ const TestimonialsSection = () => {
   const testimonials = [
     {
       name: "Rajesh Kumar",
-      role: "Founder, TechStart India",
+      role: "Founder, moveonn.co.in",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       content: "qoremedia transformed our digital presence. Within 3 months, our lead generation increased by 400%. Their strategic approach to Meta ads is unmatched.",
       rating: 5,

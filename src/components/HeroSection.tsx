@@ -157,7 +157,7 @@ const HeroSection = () => {
               Engineering high-speed systems to scale your brand and surge your revenue.
             </motion.p>
 
-            {/* Single CTA Button with Shining Border Animation */}
+            {/* Single CTA Button with Animated Border */}
             <motion.div 
               variants={itemVariants}
             >
@@ -169,7 +169,7 @@ const HeroSection = () => {
                 <Button 
                   size="lg" 
                   onClick={() => setContactOpen(true)} 
-                  className="btn-shine-border gradient-primary text-primary-foreground rounded-lg border-0"
+                  className="btn-animated-border text-primary-foreground rounded-lg border-0"
                 >
                   <span className="flex items-center gap-2">
                     Unlock the Qoremedia

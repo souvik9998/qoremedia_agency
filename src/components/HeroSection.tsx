@@ -72,51 +72,105 @@ const HeroSection = () => {
   return (
     <>
       <section className="relative min-h-screen bg-background overflow-hidden pt-20">
-        {/* Background Gradient Glow */}
+        {/* Animated Background */}
         <div className="absolute inset-0 overflow-hidden">
-          {/* Top center glow */}
+          {/* Animated gradient mesh */}
           <motion.div 
-            className="absolute -top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] gradient-glow opacity-60"
+            className="absolute inset-0"
+            style={{
+              background: "radial-gradient(ellipse 80% 50% at 50% -20%, hsl(var(--primary) / 0.15), transparent)",
+            }}
+            animate={{
+              opacity: [0.5, 0.8, 0.5],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          
+          {/* Floating particles */}
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 rounded-full bg-primary/40"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -100, 0],
+                x: [0, Math.random() * 50 - 25, 0],
+                opacity: [0, 1, 0],
+                scale: [0, 1.5, 0],
+              }}
+              transition={{
+                duration: 8 + Math.random() * 4,
+                repeat: Infinity,
+                delay: Math.random() * 5,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+          
+          {/* Large floating orbs */}
+          <motion.div 
+            className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-primary/5 blur-3xl"
             animate={{ 
-              scale: [1, 1.1, 1],
-              opacity: [0.4, 0.6, 0.4],
+              y: [0, 50, 0],
+              x: [0, -30, 0],
+              scale: [1, 1.2, 1],
             }}
             transition={{ 
-              duration: 8, 
+              duration: 15, 
               repeat: Infinity, 
               ease: "easeInOut" 
             }}
           />
-          {/* Floating orbs */}
           <motion.div 
-            className="absolute top-40 right-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl"
+            className="absolute -bottom-40 -left-40 w-[600px] h-[600px] rounded-full bg-accent/5 blur-3xl"
             animate={{ 
-              y: [0, -30, 0],
-              x: [0, 20, 0],
-              scale: [1, 1.2, 1],
+              y: [0, -50, 0],
+              x: [0, 30, 0],
+              scale: [1, 1.15, 1],
+            }}
+            transition={{ 
+              duration: 18, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              delay: 3,
+            }}
+          />
+          <motion.div 
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-primary/3 blur-3xl"
+            animate={{ 
+              scale: [1, 1.3, 1],
+              opacity: [0.3, 0.6, 0.3],
             }}
             transition={{ 
               duration: 10, 
               repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-          />
-          <motion.div 
-            className="absolute bottom-40 left-20 w-80 h-80 rounded-full bg-accent/10 blur-3xl"
-            animate={{ 
-              y: [0, 30, 0],
-              x: [0, -20, 0],
-              scale: [1, 1.15, 1],
-            }}
-            transition={{ 
-              duration: 12, 
-              repeat: Infinity, 
               ease: "easeInOut",
-              delay: 2,
+              delay: 1,
             }}
           />
-          {/* Grid pattern overlay */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
+          
+          {/* Animated grid lines */}
+          <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--primary)/0.03)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--primary)/0.03)_1px,transparent_1px)] bg-[size:80px_80px]" />
+          
+          {/* Scanning line effect */}
+          <motion.div
+            className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+            animate={{
+              top: ["-10%", "110%"],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10">

@@ -142,14 +142,10 @@ const HeroSection = () => {
             {/* Main Heading */}
             <motion.h1 
               variants={itemVariants}
-              className="font-display leading-tight mb-5 max-w-4xl tracking-tight"
+              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal leading-snug mb-5 max-w-4xl tracking-tight"
             >
-              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium">
-                Dominate Your Market With
-              </span>
-              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-gradient mt-1">
-                Performance-Driven Media
-              </span>
+              Dominate Your Market With{" "}
+              <span className="text-gradient font-medium">Performance-Driven Media</span>
             </motion.h1>
 
             {/* Subheading */}

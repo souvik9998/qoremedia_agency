@@ -144,9 +144,9 @@ const HeroSection = () => {
               variants={itemVariants}
               className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 max-w-4xl tracking-tight"
             >
-              We Help Your Business
+              we provide performance based
               <br />
-              <span className="text-gradient">To Grow</span>
+              <span className="text-gradient">buisness solution</span>
             </motion.h1>
 
             {/* Subheading */}

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import ContactModal from "./ContactModal";
 
@@ -9,16 +9,6 @@ const HeroSection = () => {
   const [contactOpen, setContactOpen] = useState(false);
   const [startCount, setStartCount] = useState(false);
   const statsRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"]
-  });
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,82 +32,34 @@ const HeroSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: {
-        duration: 0.8,
-        ease: [0.25, 0.4, 0.25, 1] as const,
-      },
-    },
-  };
-
-  const headingVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.03,
-        delayChildren: 0.5,
-      },
-    },
-  };
-
-  const letterVariants = {
-    hidden: { opacity: 0, y: 50, rotateX: -90 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      rotateX: 0,
-      transition: {
-        duration: 0.5,
+        duration: 0.6,
         ease: [0.25, 0.4, 0.25, 1] as const,
       },
     },
   };
 
   const statsVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 20 },
+    hidden: { opacity: 0, scale: 0.8 },
     visible: {
       opacity: 1,
       scale: 1,
-      y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.5,
         ease: "easeOut" as const,
       },
     },
-  };
-
-  const floatingParticles = Array.from({ length: 20 }, (_, i) => ({
-    id: i,
-    size: Math.random() * 4 + 2,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    duration: Math.random() * 10 + 10,
-    delay: Math.random() * 5,
-  }));
-
-  const splitText = (text: string) => {
-    return text.split("").map((char, index) => (
-      <motion.span
-        key={index}
-        variants={letterVariants}
-        className="inline-block"
-        style={{ whiteSpace: char === " " ? "pre" : "normal" }}
-      >
-        {char}
-      </motion.span>
-    ));
   };
 
   const stats = [
@@ -129,9 +71,9 @@ const HeroSection = () => {
 
   return (
     <>
-      <section ref={sectionRef} className="relative min-h-screen bg-background overflow-hidden pt-20">
+      <section className="relative min-h-screen bg-background overflow-hidden pt-20">
         {/* Background Gradient Glow */}
-        <motion.div className="absolute inset-0 overflow-hidden" style={{ y: backgroundY }}>
+        <div className="absolute inset-0 overflow-hidden">
           {/* Top center glow */}
           <motion.div 
             className="absolute -top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] gradient-glow opacity-60"
@@ -175,31 +117,7 @@ const HeroSection = () => {
           />
           {/* Grid pattern overlay */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
-          
-          {/* Floating particles */}
-          {floatingParticles.map((particle) => (
-            <motion.div
-              key={particle.id}
-              className="absolute rounded-full bg-primary/20"
-              style={{
-                width: particle.size,
-                height: particle.size,
-                left: `${particle.x}%`,
-                top: `${particle.y}%`,
-              }}
-              animate={{
-                y: [0, -100, 0],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: particle.duration,
-                repeat: Infinity,
-                delay: particle.delay,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </motion.div>
+        </div>
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <motion.div 
@@ -207,13 +125,11 @@ const HeroSection = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            style={{ y: textY, opacity }}
           >
             {/* Badge */}
             <motion.div 
               variants={itemVariants}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 backdrop-blur-sm"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(139, 92, 246, 0.3)" }}
             >
               <motion.span 
                 className="w-2 h-2 rounded-full bg-primary"
@@ -223,22 +139,13 @@ const HeroSection = () => {
               <span className="font-body text-sm font-medium text-primary">Digital Growth Partner</span>
             </motion.div>
 
-            {/* Main Heading with letter animation */}
+            {/* Main Heading */}
             <motion.h1 
-              variants={headingVariants}
-              initial="hidden"
-              animate="visible"
+              variants={itemVariants}
               className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal leading-snug mb-5 max-w-4xl tracking-tight"
             >
-              {splitText("Dominate Your Market With ")}
-              <motion.span 
-                className="text-gradient font-medium inline-block"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}
-              >
-                {splitText("Performance-Driven Media")}
-              </motion.span>
+              Dominate Your Market With{" "}
+              <span className="text-gradient font-medium">Performance-Driven Media</span>
             </motion.h1>
 
             {/* Subheading */}
@@ -254,27 +161,19 @@ const HeroSection = () => {
               variants={itemVariants}
             >
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 className="inline-block"
               >
                 <Button 
                   size="lg" 
                   onClick={() => setContactOpen(true)} 
-                  className="btn-animated-border text-primary-foreground rounded-lg border-0 group"
+                  className="btn-animated-border text-primary-foreground rounded-lg border-0"
                 >
-                  <motion.span 
-                    className="flex items-center gap-2"
-                    whileHover={{ x: 5 }}
-                  >
+                  <span className="flex items-center gap-2">
                     Unlock the Qoremedia
-                    <motion.span
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </motion.span>
-                  </motion.span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
                 </Button>
               </motion.div>
             </motion.div>
@@ -285,19 +184,13 @@ const HeroSection = () => {
               className="mt-20 flex flex-wrap items-center justify-center gap-8 sm:gap-16"
               variants={containerVariants}
             >
-              {stats.map((stat, index) => (
+              {stats.map((stat) => (
                 <motion.div 
                   key={stat.label}
                   variants={statsVariants}
-                  className="text-center group cursor-default"
-                  whileHover={{ scale: 1.1, y: -5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  custom={index}
+                  className="text-center"
                 >
-                  <motion.p 
-                    className={`font-display text-3xl sm:text-4xl font-bold ${stat.highlight ? 'text-primary' : 'text-foreground'}`}
-                    whileHover={{ textShadow: stat.highlight ? "0 0 20px rgba(139, 92, 246, 0.5)" : "none" }}
-                  >
+                  <p className={`font-display text-3xl sm:text-4xl font-bold ${stat.highlight ? 'text-primary' : 'text-foreground'}`}>
                     {stat.value !== null ? (
                       <>
                         {startCount ? (
@@ -314,8 +207,8 @@ const HeroSection = () => {
                     ) : (
                       stat.text
                     )}
-                  </motion.p>
-                  <p className="font-body text-sm text-muted-foreground mt-1 group-hover:text-foreground transition-colors">{stat.label}</p>
+                  </p>
+                  <p className="font-body text-sm text-muted-foreground mt-1">{stat.label}</p>
                 </motion.div>
               ))}
             </motion.div>
